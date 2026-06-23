@@ -108,16 +108,17 @@ export default function Journal() {
         </div>
 
         {/* Writing prompts */}
-        <div className="jn-prompts">
-          <p>✨ Need inspiration? Try a prompt:</p>
-          <div className="jn-prompt-chips">
-            {PROMPTS.map((p, i) => (
-              <button key={i} className="jn-chip" onClick={() => addPrompt(p)}
-                {p}
-              </button>
-            ))}
-          </div>
-        </div>
+        <div className="jn-prompt-chips">
+  {PROMPTS.map((p, i) => (
+    <button
+      key={i}
+      className="jn-chip"
+      onClick={() => addPrompt(p)}
+    >
+      {p}
+    </button>
+  ))}
+</div>
 
         {/* Compose */}
         <div className="jn-compose">
