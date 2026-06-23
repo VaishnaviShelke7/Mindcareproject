@@ -1,0 +1,251 @@
+/* Journal.css */
+
+.jn-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 8%  15%, rgba(52,211,153,0.32) 0%, transparent 52%),
+    radial-gradient(ellipse at 92% 85%, rgba(16,185,129,0.24) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 12%, rgba(5,150,105,0.18)  0%, transparent 48%),
+    linear-gradient(155deg, #d1fae5 0%, #a7f3d0 38%, #ecfdf5 70%, #bbf7d0 100%);
+  background-attachment: fixed;
+  padding: 30px 16px 60px;
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Floating decorative circles */
+.jn-page::before,
+.jn-page::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.jn-page::before {
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(79,179,162,0.13), transparent 70%);
+  top: -80px; left: -80px;
+}
+.jn-page::after {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(58,142,207,0.12), transparent 70%);
+  bottom: -60px; right: -60px;
+}
+
+.jn-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Header ── */
+.jn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.jn-header-center { flex: 1; text-align: center; }
+.jn-header-center h1 { margin: 0; font-size: 26px; color: #0f766e; }
+.jn-header-center p  { margin: 4px 0 0; font-size: 13px; color: #64748b; }
+
+.jn-back-btn {
+  padding: 9px 20px; border-radius: 999px; border: none;
+  background: rgba(255,255,255,0.85); color: #0f766e; font-weight: 600;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.08); transition: all 0.2s;
+}
+.jn-back-btn:hover { background: white; transform: translateY(-2px); }
+
+.jn-count-badge {
+  background: linear-gradient(135deg, #4fb3a2, #3a8ecf);
+  color: white; padding: 8px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 12px rgba(79,179,162,0.3);
+}
+
+/* ── Prompts ── */
+.jn-prompts {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+.jn-prompts p { margin: 0 0 10px; font-size: 13px; color: #64748b; font-weight: 500; }
+.jn-prompt-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.jn-chip {
+  padding: 6px 14px; border-radius: 999px; border: none;
+  background: rgba(79,179,162,0.1); color: #0f766e; font-size: 12.5px;
+  cursor: pointer; transition: all 0.2s;
+  border: 1px solid rgba(79,179,162,0.25);
+}
+.jn-chip:hover { background: rgba(79,179,162,0.22); transform: translateY(-1px); }
+
+/* ── Compose card ── */
+.jn-compose {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 24px 26px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 4px solid #4fb3a2;
+}
+
+.jn-compose-title {
+  font-size: 15px; font-weight: 600; color: #0f766e; margin: 0;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* Lined-paper textarea */
+.jn-textarea-wrap {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    #e2f4f1 31px,
+    #e2f4f1 32px
+  );
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  overflow: hidden;
+  transition: border 0.2s;
+}
+.jn-textarea-wrap:focus-within { border-color: #4fb3a2; }
+
+.jn-textarea {
+  width: 100%; min-height: 160px;
+  padding: 12px 14px; line-height: 32px;
+  font-size: 15px; font-family: inherit;
+  border: none; outline: none; resize: vertical;
+  background: transparent; box-sizing: border-box; color: #1e293b;
+}
+
+/* Mood tag picker */
+.jn-mood-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.jn-mood-row span { font-size: 13px; color: #64748b; font-weight: 500; }
+.jn-mood-tag {
+  padding: 5px 13px; border-radius: 999px; border: 1.5px solid #e2e8f0;
+  background: #f8fafc; font-size: 12.5px; cursor: pointer;
+  color: #475569; transition: all 0.15s;
+}
+.jn-mood-tag.active { color: white; border-color: transparent; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+
+.jn-compose-footer {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.jn-word-count { font-size: 12px; color: #94a3b8; }
+
+.jn-save-btn {
+  padding: 11px 32px; border: none; border-radius: 999px;
+  background: linear-gradient(135deg, #4fb3a2, #3a8ecf);
+  color: white; font-size: 14px; font-weight: 600; cursor: pointer;
+  box-shadow: 0 5px 16px rgba(79,179,162,0.35); transition: all 0.2s;
+}
+.jn-save-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(79,179,162,0.4); }
+.jn-save-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.jn-save-btn.editing { background: linear-gradient(135deg, #fbbf24, #f97316); }
+
+/* ── Search bar ── */
+.jn-search-wrap {
+  position: relative;
+}
+.jn-search {
+  width: 100%; padding: 11px 16px 11px 40px;
+  border-radius: 999px; border: 1.5px solid #e2e8f0;
+  background: rgba(255,255,255,0.85); font-size: 14px;
+  outline: none; box-sizing: border-box; transition: border 0.2s;
+  font-family: inherit;
+}
+.jn-search:focus { border-color: #4fb3a2; background: white; }
+.jn-search-icon {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 16px; pointer-events: none;
+}
+
+/* ── Entries list ── */
+.jn-entries { display: flex; flex-direction: column; gap: 14px; }
+
+.jn-entry {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  border-left: 5px solid #4fb3a2;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.jn-entry:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.1); }
+
+.jn-entry-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.jn-entry-mood-tag {
+  padding: 3px 12px; border-radius: 999px; font-size: 12px;
+  font-weight: 600; color: white;
+}
+.jn-entry-date { font-size: 12px; color: #94a3b8; margin-left: auto; }
+
+.jn-entry-text {
+  font-size: 14.5px; color: #334155; line-height: 1.7;
+  white-space: pre-wrap; word-break: break-word;
+}
+.jn-entry-text.collapsed {
+  display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.jn-expand-btn {
+  background: none; border: none; padding: 4px 0; margin: 4px 0 0;
+  font-size: 12.5px; color: #4fb3a2; cursor: pointer;
+  font-weight: 600; box-shadow: none; transition: color 0.15s;
+}
+.jn-expand-btn:hover { color: #0f766e; transform: none; box-shadow: none; }
+
+.jn-entry-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 12px; flex-wrap: wrap; gap: 8px;
+}
+.jn-entry-words { font-size: 11.5px; color: #94a3b8; }
+
+.jn-entry-actions { display: flex; gap: 8px; }
+.jn-edit-btn, .jn-del-btn {
+  padding: 6px 16px; border-radius: 999px; border: none;
+  font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  box-shadow: none;
+}
+.jn-edit-btn { background: #fef3c7; color: #92400e; }
+.jn-edit-btn:hover { background: #fde68a; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+.jn-del-btn  { background: #fee2e2; color: #991b1b; }
+.jn-del-btn:hover  { background: #fecaca; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+
+/* ── Empty state ── */
+.jn-empty {
+  text-align: center; color: #94a3b8; padding: 50px 20px;
+  background: rgba(255,255,255,0.7); border-radius: 20px;
+  font-size: 15px; line-height: 1.8;
+}
+.jn-empty span { font-size: 40px; display: block; margin-bottom: 12px; }
+
+/* ── Saved flash ── */
+.jn-saved {
+  text-align: center; padding: 12px; border-radius: 12px;
+  background: #f0fdf4; color: #15803d; font-size: 14px;
+  font-weight: 500; border: 1.5px solid #bbf7d0;
+}
+
+@media (max-width: 600px) {
+  .jn-header { flex-direction: column; text-align: center; }
+}

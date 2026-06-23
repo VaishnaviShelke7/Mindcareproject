@@ -1,0 +1,142 @@
+/* CalmGames.css */
+.cg-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 8%  15%, rgba(52,211,153,0.32) 0%, transparent 52%),
+    radial-gradient(ellipse at 92% 85%, rgba(16,185,129,0.24) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 12%, rgba(5,150,105,0.18)  0%, transparent 48%),
+    linear-gradient(155deg, #d1fae5 0%, #a7f3d0 38%, #ecfdf5 70%, #bbf7d0 100%);
+  background-attachment: fixed;
+  padding: 30px 16px 60px;
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+}
+
+.cg-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+
+/* Header */
+.cg-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.cg-header-center { flex: 1; text-align: center; }
+.cg-header-center h1 { margin: 0; font-size: 24px; color: #0f766e; }
+.cg-header-center p  { margin: 4px 0 0; font-size: 13px; color: #64748b; }
+
+.cg-back-btn {
+  padding: 9px 20px; border-radius: 999px; border: none;
+  background: rgba(255,255,255,0.8); color: #0f766e; font-weight: 600;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.07); transition: all 0.2s;
+}
+.cg-back-btn:hover { background: white; transform: translateY(-2px); }
+
+/* Tabs */
+.cg-tabs {
+  display: flex; gap: 10px;
+  background: rgba(255,255,255,0.6); padding: 6px; border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.cg-tab {
+  flex: 1; padding: 10px; border: none; border-radius: 12px;
+  background: transparent; font-size: 13px; font-weight: 500;
+  cursor: pointer; color: #64748b; transition: all 0.2s;
+}
+.cg-tab.active {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: white; box-shadow: 0 4px 12px rgba(5,150,105,0.35);
+}
+
+/* Card wrapper */
+.cg-card {
+  background: rgba(255,255,255,0.88); backdrop-filter: blur(10px);
+  border-radius: 22px; padding: 28px 24px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.cg-card h2 { margin: 0; font-size: 20px; color: #0f766e; }
+.cg-card p  { margin: 0; font-size: 13px; color: #64748b; text-align: center; }
+
+/* ── MEMORY MATCH ── */
+.cg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  gap: 10px;
+}
+
+.cg-card-tile {
+  width: 72px; height: 72px; border-radius: 14px; border: none;
+  font-size: 28px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.cg-card-tile.hidden {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: transparent;
+}
+.cg-card-tile.visible  { background: white; }
+.cg-card-tile.matched  { background: #f0fdf4; border: 2px solid #4ade80; cursor: default; }
+.cg-card-tile:hover:not(.matched) { transform: scale(1.07); }
+
+.cg-status { font-size: 15px; font-weight: 600; color: #0f766e; }
+.cg-win { font-size: 22px; font-weight: 700; color: #15803d; text-align: center; }
+
+.cg-btn {
+  padding: 11px 30px; border: none; border-radius: 999px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: white; font-size: 14px; font-weight: 600;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(5,150,105,0.35);
+  transition: all 0.2s;
+}
+.cg-btn:hover { transform: translateY(-2px); }
+
+/* ── BUBBLE POP ── */
+.cg-bubble-area {
+  width: 100%; height: 320px; position: relative;
+  background: linear-gradient(135deg, #f0fdf4, #eff6ff);
+  border-radius: 18px; overflow: hidden;
+  border: 1.5px solid #e2e8f0;
+}
+
+.cg-bubble {
+  position: absolute; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; cursor: pointer;
+  animation: floatUp linear forwards;
+  box-shadow: inset -4px -4px 8px rgba(255,255,255,0.5), 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.1s;
+}
+.cg-bubble:hover { transform: scale(1.15); }
+
+@keyframes floatUp {
+  0%   { bottom: -80px; opacity: 1; }
+  100% { bottom: 110%;  opacity: 0.2; }
+}
+
+.cg-score-row { display: flex; gap: 24px; font-size: 15px; font-weight: 600; color: #0f766e; }
+.cg-bubble-timer { font-size: 13px; color: #94a3b8; }
+
+/* ── BREATHING BALLOON ── */
+.cg-balloon-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+
+.cg-balloon {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.6), rgba(16,185,129,0.5));
+  box-shadow: 0 8px 30px rgba(16,185,129,0.40);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: #065f46;
+  transition: width 0.5s ease, height 0.5s ease;
+  border: 3px solid rgba(16,185,129,0.45);
+}
+
+.cg-breath-phase {
+  font-size: 22px; font-weight: 700; color: #0f766e;
+  min-height: 32px;
+}
+
+.cg-breath-count {
+  font-size: 40px; font-weight: 800; color: #3a8ecf;
+  min-height: 52px; line-height: 1;
+}
+
+.cg-breath-sub { font-size: 13px; color: #94a3b8; }
+.cg-cycles     { font-size: 14px; color: #64748b; font-weight: 500; }

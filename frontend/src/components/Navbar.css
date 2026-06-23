@@ -1,0 +1,54 @@
+.navbar {
+  height: 64px;
+  background: #1f6f78;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* LEFT: Logo + App Name */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navbar-left img {
+  height: 34px;
+  width: 34px;
+  object-fit: contain;
+}
+
+/* RIGHT: User + Logout */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-name {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: white;
+  color: #1f6f78;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #e6f4f5;
+}

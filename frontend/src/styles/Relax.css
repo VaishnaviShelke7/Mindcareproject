@@ -1,0 +1,263 @@
+/* Relax.css — overrides and additions on top of App.css */
+
+/* ── Page wrapper ── */
+.relax-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 8%  15%, rgba(52,211,153,0.32) 0%, transparent 52%),
+    radial-gradient(ellipse at 92% 85%, rgba(16,185,129,0.24) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 12%, rgba(5,150,105,0.18)  0%, transparent 48%),
+    linear-gradient(155deg, #d1fae5 0%, #a7f3d0 38%, #ecfdf5 70%, #bbf7d0 100%) !important;
+  background-attachment: fixed !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 16px 60px;
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Kill the old animated-bg div so our static gradient shows */
+.animated-bg { display: none !important; }
+
+/* ── Back button ── */
+.back-btn {
+  position: static !important;
+  align-self: flex-start;
+  padding: 9px 20px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.85) !important;
+  color: #0f766e !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08) !important;
+  transition: all 0.2s !important;
+  margin-bottom: 10px;
+}
+.back-btn:hover { background: white !important; transform: translateY(-2px) !important; }
+
+/* ── Page title ── */
+.relax-page > h1 {
+  font-size: 26px;
+  color: #0f766e;
+  margin: 0 0 6px;
+  text-align: center;
+}
+.relax-page > p.relax-sub {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+/* ── Tab selector ── */
+.exercise-selector {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(10px);
+  padding: 7px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  margin-bottom: 28px;
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+}
+
+.exercise-selector .btn {
+  flex: 1;
+  min-width: 130px;
+  padding: 11px 10px !important;
+  border-radius: 13px !important;
+  border: none;
+  background: transparent !important;
+  color: #64748b !important;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: all 0.2s;
+}
+.exercise-selector .btn:hover { background: rgba(255,255,255,0.7) !important; color: #0f766e !important; transform: none; }
+.exercise-selector .btn.active {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  color: white !important;
+  box-shadow: 0 4px 14px rgba(5,150,105,0.38) !important;
+}
+
+/* ── Breathing section ── */
+.breathing-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(14px);
+  border-radius: 28px;
+  padding: 36px 30px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.09);
+  animation: fadeUp 0.5s ease;
+}
+
+/* Phase label above the circle */
+.breath-phase-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f766e;
+  letter-spacing: 1px;
+  min-height: 30px;
+  transition: color 0.4s;
+}
+
+/* Redesigned breath circle */
+.breath-circle {
+  width: 170px !important;
+  height: 170px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 38% 38%, rgba(255,255,255,0.55), rgba(16,185,129,0.55)) !important;
+  box-shadow: 0 0 0 18px rgba(16,185,129,0.10),
+              0 0 0 36px rgba(16,185,129,0.05),
+              0 0 50px rgba(16,185,129,0.45) !important;
+  animation: breathePulse 14s ease-in-out infinite;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  border: 3px solid rgba(16,185,129,0.40);
+  transition: background 0.5s;
+}
+
+.breath-circle[data-phase="Inhale"] {
+  animation: inhaleAnim 4s ease-in-out forwards;
+  box-shadow: 0 0 0 22px rgba(16,185,129,0.14),
+              0 0 60px rgba(16,185,129,0.55) !important;
+}
+.breath-circle[data-phase="Hold"] {
+  box-shadow: 0 0 0 22px rgba(5,150,105,0.14),
+              0 0 60px rgba(5,150,105,0.50) !important;
+  background: radial-gradient(circle at 38% 38%, rgba(255,255,255,0.55), rgba(5,150,105,0.55)) !important;
+}
+.breath-circle[data-phase="Exhale"] {
+  animation: exhaleAnim 6s ease-in-out forwards;
+  box-shadow: 0 0 0 14px rgba(16,185,129,0.08),
+              0 0 40px rgba(16,185,129,0.32) !important;
+}
+
+@keyframes inhaleAnim {
+  from { transform: scale(1);   opacity: 0.75; }
+  to   { transform: scale(1.45); opacity: 1; }
+}
+@keyframes exhaleAnim {
+  from { transform: scale(1.45); opacity: 1; }
+  to   { transform: scale(1);   opacity: 0.75; }
+}
+
+/* Phase instruction text */
+.breathing-instruction {
+  font-size: 1.15rem !important;
+  color: #0f766e !important;
+  font-weight: 600;
+  margin: 6px 0 !important;
+}
+
+/* Timer display */
+.breathing-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.timer {
+  font-size: 3.2rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 !important;
+}
+
+.breathing-timer .btn {
+  padding: 10px 30px !important;
+  border-radius: 999px !important;
+  font-size: 14px !important;
+  margin: 0 !important;
+}
+.breathing-timer .btn.reset {
+  background: rgba(255,255,255,0.8) !important;
+  color: #64748b !important;
+  box-shadow: none !important;
+}
+.breathing-timer .btn.reset:hover { background: white !important; transform: translateY(-2px); }
+
+/* Progress ring */
+.progress-ring { margin-top: 4px !important; }
+.progress-fg { stroke: #10b981 !important; stroke-width: 10 !important; }
+.progress-bg { stroke: rgba(16,185,129,0.12) !important; stroke-width: 10 !important; }
+
+/* Timer row */
+.breath-btn-row { display: flex; gap: 12px; }
+
+/* ── Video sections ── */
+.relax-content { width: 100%; max-width: 1050px; animation: fadeUp 0.5s ease; }
+
+.relax-patch {
+  background: rgba(255,255,255,0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 26px !important;
+  padding: 30px 28px !important;
+  box-shadow: 0 16px 44px rgba(15,118,110,0.14) !important;
+}
+
+.relax-patch h2 { color: #0f766e; margin: 0 0 6px; font-size: 20px; }
+.relax-patch > p { color: #64748b; font-size: 13.5px; margin: 0 0 4px; }
+
+.video-grid {
+  gap: 16px !important;
+  padding-bottom: 14px !important;
+  margin-top: 20px !important;
+}
+.video-grid iframe {
+  min-width: 300px !important;
+  height: 195px !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18) !important;
+}
+.video-grid iframe:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.28) !important;
+}
+
+/* Tips */
+.tip { color: #0f766e !important; font-weight: 500; font-size: 13.5px !important; margin-top: 18px !important; }
+
+.meditation-tips {
+  list-style: none; padding: 0; margin: 16px 0 0;
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+}
+.meditation-tips li {
+  background: rgba(79,179,162,0.1);
+  border: 1px solid rgba(79,179,162,0.25);
+  padding: 8px 18px; border-radius: 999px;
+  font-size: 13px; color: #0f766e; font-weight: 500;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating bubbles — keep subtle */
+.floating-bubble {
+  background: rgba(79,179,162,0.12) !important;
+}
