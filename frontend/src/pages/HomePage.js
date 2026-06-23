@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/HomePage.css";
 import logo from "../assets/logo.png";
-import moodMini from "../assets/images/moods-line.png";
+//import moodMini from "../assets/images/moods-line.png";
 import journalImg from "../assets/images/therapy3.jpg";
 import moodImg from "../assets/images/moods.jpg";
 
