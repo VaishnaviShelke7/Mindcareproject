@@ -81,8 +81,8 @@ export default function Journal() {
   const handleDelete = (i) =>
     setEntries((prev) => prev.filter((_, idx) => idx !== i));
 
-  const usePrompt = (p) =>
-    setText((prev) => (prev ? prev + "\n\n" + p + " " : p + " "));
+  const addPrompt = (p) =>
+  setText((prev) => (prev ? prev + "\n\n" + p + " " : p + " "));
 
   const toggleExpand = (i) =>
     setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
@@ -112,7 +112,7 @@ export default function Journal() {
           <p>✨ Need inspiration? Try a prompt:</p>
           <div className="jn-prompt-chips">
             {PROMPTS.map((p, i) => (
-              <button key={i} className="jn-chip" onClick={() => usePrompt(p)}>
+              <button key={i} className="jn-chip" onClick={() => addPrompt(p)}
                 {p}
               </button>
             ))}
